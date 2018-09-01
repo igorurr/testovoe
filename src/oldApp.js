@@ -6,11 +6,10 @@ import styled from "styled-components";
 import yup from 'yup';
 import formik from 'formik';
 
-import logo from './logo.svg';
+/*import logo from './logo.svg';
 import './App.css';
 
 const Button = styled.button`
-  /* Adapt the colours based on primary prop */
   background: ${props => props.primary ? 'palevioletred' : 'white'};
   color: ${props => props.primary ? '#00F000' : 'palevioletred'};
 
@@ -19,9 +18,9 @@ const Button = styled.button`
   padding: 0.25em 1em;
   border: 2px solid palevioletred;
   border-radius: 3px;
-`;
+`;*/
 	
-class App extends Component {
+/*class App extends Component {
 	
   render() {
     return (
@@ -40,6 +39,6 @@ class App extends Component {
       </div>
     );
   }
-}
+}*/
 
 export default App;
