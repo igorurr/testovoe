@@ -1,1 +1,2 @@
 export const ADD_COWORKER = 'ADD_COWORKER';
+export const REFRESH_COWORKERS = 'REFRESH_COWORKERS';

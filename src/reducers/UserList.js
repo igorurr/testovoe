@@ -21,6 +21,11 @@ export default function UserList(state = initialState, action) {
 			}
 		]
       }
+	  
+    case _ActionTypes.REFRESH_COWORKERS:
+      return {
+        List: DefaultUserList
+      }
 
     default:
       return state;

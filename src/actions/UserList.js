@@ -9,7 +9,7 @@ export function AddCoworker(coworkerData) {
 
 export function ReloadCoworkers(coworkersData) {
   return {
-    type: _ActionTypes.ADD_COWORKER,
+    type: _ActionTypes.REFRESH_COWORKERS,
     coworkersData
   };
 }

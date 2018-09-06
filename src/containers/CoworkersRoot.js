@@ -22,23 +22,41 @@ const AddButton = styled.button`
 
 
 class CoworkersRoot extends Component {
-  render() {
-	  console.log(this.props.UserList)
-    return (
-		<div id="CoworkersRoot">
-			<header>
-				<Link to="/add">
-					<AddButton>
-						<img src={ImgAddCoworker} />
-					</AddButton>
-				</Link>
-			</header>
-			<content>
-				<Coworkers UserList={this.props.UserList.List} />
-			</content>
-		</div>
-    );
-  }
+	StartUpdateListProcess()
+	{
+		const UpdateList = () => {
+			console.log("chlen");
+			return dispatch => {
+				dispatch({ type: 'REFRESH_COWORKERS' });
+			}
+		};
+		
+		this.props.dispatch(UpdateList());
+		setInterval(
+			() => { this.props.dispatch(UpdateList()) },
+			10000
+		);
+	}
+	
+	componentWillMount(){
+		//this.StartUpdateListProcess();
+	}
+	render() {
+		return (
+			<div id="CoworkersRoot">
+				<header>
+					<Link to="/add">
+						<AddButton>
+							<img src={ImgAddCoworker} />
+						</AddButton>
+					</Link>
+				</header>
+				<content>
+					<Coworkers UserList={this.props.UserList.List} />
+				</content>
+			</div>
+		);
+	}
 }
 
 
