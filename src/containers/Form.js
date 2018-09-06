@@ -122,16 +122,16 @@ class MyForm extends Component {
 				label="Должность"
 				placeholder="Моя должность"
 				error={(this.state.wasSubmittingOnce || touched.post) && errors.post}
-				value={values.firstName}
+				value={values.post}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			  />
 			  <TextInput
 				id="dateWasBorn"
-				type="text"
+				type="date"
 				label="Дата рождения"
 				error={(this.state.wasSubmittingOnce || touched.dateWasBorn) && errors.dateWasBorn}
-				value={values.firstName}
+				value={values.dateWasBorn}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			  />
@@ -175,6 +175,7 @@ const MyEnhancedForm = withFormik({
     dateWasBorn: Yup.date()
 		.typeError('Неверный формат даты')
 		.max(new Date(), 'Это невозможно')
+      .required('Поле пусто')
   }),
 
   /*mapPropsToValues: ({ user }) => ({
