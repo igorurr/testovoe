@@ -65,67 +65,69 @@ const TextInput = ({
   );
 };
 
-const MyForm = props => {
-  const {
-    values,
-    touched,
-    errors,
-    dirty,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    handleReset,
-    isSubmitting,
-  } = props;
-  console.log(errors);
-  return (
-    <form onSubmit={handleSubmit}>
-      <TextInput
-        id="firstName"
-        type="text"
-        label="First Name"
-        placeholder="John"
-        error={touched.firstName && errors.firstName}
-        value={values.firstName}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
-      <TextInput
-        id="lastName"
-        type="text"
-        label="Last Name"
-        placeholder="Doe"
-        error={touched.lastName && errors.lastName}
-        value={values.lastName}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
-      <TextInput
-        id="email"
-        type="email"
-        label="Email"
-        placeholder="Enter your email"
-        error={touched.email && errors.email}
-        value={values.email}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
-      <button
-        type="button"
-        className="outline"
-        onClick={handleReset}
-        disabled={!dirty || isSubmitting}
-      >
-        Reset
-      </button>
-      <button type="submit" disabled={isSubmitting}>
-        Submit
-      </button>
-	  
-	  <Popup />
-	  
-    </form>
-  );
+
+class MyForm extends Component {
+	render(){
+		const {
+			values,
+			touched,
+			errors,
+			dirty,
+			handleChange,
+			handleBlur,
+			handleSubmit,
+			handleReset,
+			isSubmitting
+		} = this.props;
+		return (
+			<form onSubmit={handleSubmit}>
+			  <TextInput
+				id="firstName"
+				type="text"
+				label="First Name"
+				placeholder="John"
+				error={touched.firstName && errors.firstName}
+				value={values.firstName}
+				onChange={handleChange}
+				onBlur={handleBlur}
+			  />
+			  <TextInput
+				id="lastName"
+				type="text"
+				label="Last Name"
+				placeholder="Doe"
+				error={touched.lastName && errors.lastName}
+				value={values.lastName}
+				onChange={handleChange}
+				onBlur={handleBlur}
+			  />
+			  <TextInput
+				id="email"
+				type="email"
+				label="Email"
+				placeholder="Enter your email"
+				error={touched.email && errors.email}
+				value={values.email}
+				onChange={handleChange}
+				onBlur={handleBlur}
+			  />
+			  <button
+				type="button"
+				className="outline"
+				onClick={handleReset}
+				disabled={!dirty || isSubmitting}
+			  >
+				Reset
+			  </button>
+			  <button type="submit" disabled={isSubmitting}>
+				Submit
+			  </button>
+			  
+			  <Popup />
+			  
+			</form>
+		);
+	}
 };
 
 
