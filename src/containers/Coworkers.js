@@ -10,61 +10,9 @@ import formik from 'formik';
 
 import Coworker from './Coworker'
 
-var UserData = [
-	{
-		ava: 			"https://pp.userapi.com/c846322/v846322871/a0c39/V8e-pUPjt8w.jpg?ava=1",
-		first_name:		"Саша",
-		last_name:		"Жолудь",
-		age:			"22",
-		department:		"отдел клиентской разработки",
-	},
-	{
-		ava: 			"https://pp.userapi.com/c846322/v846322871/a0c39/V8e-pUPjt8w.jpg?ava=1",
-		first_name:		"Саша",
-		last_name:		"Жолудь",
-		age:			"22",
-		department:		"отдел клиентской разработки",
-	},
-	{
-		ava: 			"https://pp.userapi.com/c846322/v846322871/a0c39/V8e-pUPjt8w.jpg?ava=1",
-		first_name:		"Саша",
-		last_name:		"Жолудь",
-		age:			"22",
-		department:		"отдел клиентской разработки",
-	},
-	{
-		ava: 			"https://pp.userapi.com/c846322/v846322871/a0c39/V8e-pUPjt8w.jpg?ava=1",
-		first_name:		"Саша",
-		last_name:		"Жолудь",
-		age:			"22",
-		department:		"отдел клиентской разработки",
-	},
-	{
-		ava: 			"https://pp.userapi.com/c846322/v846322871/a0c39/V8e-pUPjt8w.jpg?ava=1",
-		first_name:		"Саша",
-		last_name:		"Жолудь",
-		age:			"22",
-		department:		"отдел клиентской разработки",
-	},
-	{
-		ava: 			"https://pp.userapi.com/c846322/v846322871/a0c39/V8e-pUPjt8w.jpg?ava=1",
-		first_name:		"Саша",
-		last_name:		"Жолудь",
-		age:			"22",
-		department:		"отдел клиентской разработки",
-	},
-	{
-		ava: 			"https://pp.userapi.com/c846322/v846322871/a0c39/V8e-pUPjt8w.jpg?ava=1",
-		first_name:		"Саша",
-		last_name:		"Жолудь",
-		age:			"22",
-		department:		"отдел клиентской разработки",
-	}
-];
-
 class Coworkers extends Component {
 	GetCoworkers() {
-		return UserData.map( (_Data) => <Coworker data={_Data} /> );
+		return this.props.UserList.map( (_Data) => <Coworker data={_Data} /> );
 	}
 	
 	render() {

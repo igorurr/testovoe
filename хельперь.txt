@@ -3,7 +3,7 @@ create-react-app my-app
 cd my-app/
 npm start # yarn start
 
-npm install --save redux react-redux react-router-dom connected-react-router redux-thunk history
+npm install --save redux react-redux react-router-redux react-router-dom connected-react-router redux-thunk history
 
 npm i formik --save
 
@@ -14,3 +14,5 @@ npm install --save styled-components
 npm install --save react-router-redux
 
 npm install reactjs-popup --save
+
+редакс вёрсстка рефакторинг

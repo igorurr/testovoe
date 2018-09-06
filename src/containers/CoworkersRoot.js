@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux'
+import { connect } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 import { Router, Route, Link } from 'react-router-dom'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
@@ -20,8 +20,10 @@ const AddButton = styled.button`
   border-radius: 3px;
 `;
 
+
 class CoworkersRoot extends Component {
   render() {
+	  console.log(this.props.UserList)
     return (
 		<div id="CoworkersRoot">
 			<header>
@@ -32,7 +34,7 @@ class CoworkersRoot extends Component {
 				</Link>
 			</header>
 			<content>
-				<Coworkers />
+				<Coworkers UserList={this.props.UserList.List} />
 			</content>
 		</div>
     );
@@ -40,5 +42,8 @@ class CoworkersRoot extends Component {
 }
 
 
+function mapStateToProps(state) {
+  return { UserList: state.UserList }
+}
 
-export default CoworkersRoot;
+export default connect(mapStateToProps)(CoworkersRoot)
