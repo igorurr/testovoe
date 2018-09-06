@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Router, Route, Link } from 'react-router-dom'
+import { Router, Route, Link, Redirect } from 'react-router-dom'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import * as UserList from '../actions/UserList';
@@ -16,7 +16,7 @@ class CoworkersForm extends Component {
 		return (
 			<div>
 				<Link to="/list">
-					<a>asdasd</a>
+					Назад
 				</Link>
 				<Form addCoworker={actions.AddCoworker} />
 			</div>

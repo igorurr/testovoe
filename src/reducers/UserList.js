@@ -6,6 +6,7 @@ const initialState = {
 };
 
 export default function UserList(state = initialState, action) {
+	console.log(action.type, state);
   switch (action.type) {
     case _ActionTypes.ADD_COWORKER:
       return {
@@ -30,5 +31,4 @@ export default function UserList(state = initialState, action) {
     default:
       return state;
   }
-	console.log(state);
 }

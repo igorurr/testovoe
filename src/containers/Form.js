@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, Link, Redirect } from 'react-router-dom'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import styled from "styled-components";
@@ -77,6 +77,7 @@ const MyForm = props => {
     handleReset,
     isSubmitting,
   } = props;
+  console.log(errors);
   return (
     <form onSubmit={handleSubmit}>
       <TextInput
@@ -147,9 +148,10 @@ const MyEnhancedForm = withFormik({
   
   handleSubmit: (values, { props, setSubmitting }) => {
     //console.log(values);
-    //console.log(props);
+    console.log(props);
 	props.addCoworker(values);
     setSubmitting(false);
+	<Redirect to={{ pathname: "/login" }} />
   },
   
   displayName: 'MyForm',

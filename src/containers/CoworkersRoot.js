@@ -25,21 +25,25 @@ class CoworkersRoot extends Component {
 	StartUpdateListProcess()
 	{
 		const UpdateList = () => {
-			console.log("chlen");
 			return dispatch => {
 				dispatch({ type: 'REFRESH_COWORKERS' });
 			}
 		};
 		
-		this.props.dispatch(UpdateList());
-		setInterval(
+		this.UpdateListProcess = setInterval(
 			() => { this.props.dispatch(UpdateList()) },
 			10000
 		);
 	}
+	StopUpdateListProcess(){
+		clearInterval(this.UpdateListProcess);
+	}
 	
 	componentWillMount(){
-		//this.StartUpdateListProcess();
+		this.StartUpdateListProcess();
+	}
+	componentWillUnmount(){
+		this.StopUpdateListProcess();
 	}
 	render() {
 		return (
