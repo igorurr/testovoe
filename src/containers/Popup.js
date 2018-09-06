@@ -2,25 +2,31 @@ import React, { Component } from 'react';
 import ContainerPopup from "reactjs-popup";
 
 export default class Popup extends React.Component {
+	checkOpened() {
+		return (this.props.opened !== undefined && this.props.opened) || this.state.opened;
+	}
+	
   constructor(props) {
     super(props);
-    this.state = { open: false };
+	console.log('popup', props.opened);
+    this.state = { opened: (this.props.opened !== undefined && this.props.opened) };
   }
   openModal = () => {
-    this.setState({ open: true });
-  };
+    this.setState({ opened: true });
+  }
   closeModal = () => {
-    this.setState({ open: false });
-  };
+    this.setState({ opened: false });
+  }
+  
+  componentDidUpdate(){
+	
+  }
 
   render() {
     return (
       <div>
-        <button className="button" onClick={this.openModal}>
-          Controlled Popup
-        </button>
         <ContainerPopup
-          open={this.state.open}
+          open={this.checkOpened()}
           closeOnDocumentClick
           onClose={this.closeModal}
         >
@@ -28,19 +34,8 @@ export default class Popup extends React.Component {
             <a className="close" onClick={this.closeModal}>
               &times;
             </a>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae magni
-            omnis delectus nemo, maxime molestiae dolorem numquam mollitia, voluptate
-            ea, accusamus excepturi deleniti ratione sapiente! Laudantium, aperiam
-            doloribus. Odit, aut.
-			
-			<button
-				className="button"
-				onClick={() => {
-					this.closeModal();
-				}}
-			>
-				close modal
-			</button>
+			<p>Данныe успешно добавлены</p>
+            <p>Через 1,5 секунды вы будете переброшены на прошлый роут</p>
           </div>
         </ContainerPopup>
       </div>

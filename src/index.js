@@ -24,7 +24,7 @@ const store = createStore(
 
 //console.log(store.getState());
 
-export const history = createHistory();
+var history = createHistory();
 
 ReactDOM.render(
 	<Provider store={store}>

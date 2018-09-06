@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
-import { Router, Route, Link, Redirect } from 'react-router-dom'
+import { Router, Route, Link, Redirect, withRouter } from 'react-router-dom'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import styled from "styled-components";
@@ -10,6 +10,11 @@ import { withFormik } from 'formik';
 
 import Popup from "./Popup";
 
+
+
+
+import createHistory from 'history/createBrowserHistory';
+var history = createHistory();
 
 
 const InputFeedback = ({ error }) =>
@@ -67,6 +72,11 @@ const TextInput = ({
 
 
 class MyForm extends Component {
+	constructor(props){
+		super(props);
+		this.state = { wasSubmittingOnce: false };
+	}
+	
 	render(){
 		const {
 			values,
@@ -79,14 +89,19 @@ class MyForm extends Component {
 			handleReset,
 			isSubmitting
 		} = this.props;
+		
+		console.log('MyForm',isSubmitting);
+		if( !this.state.wasSubmittingOnce && isSubmitting )
+			this.setState({ wasSubmittingOnce: true });
+		
 		return (
 			<form onSubmit={handleSubmit}>
 			  <TextInput
 				id="firstName"
 				type="text"
-				label="First Name"
-				placeholder="John"
-				error={touched.firstName && errors.firstName}
+				label="Имя"
+				placeholder="Моё имя"
+				error={(this.state.wasSubmittingOnce || touched.firstName) && errors.firstName}
 				value={values.firstName}
 				onChange={handleChange}
 				onBlur={handleBlur}
@@ -94,10 +109,29 @@ class MyForm extends Component {
 			  <TextInput
 				id="lastName"
 				type="text"
-				label="Last Name"
-				placeholder="Doe"
-				error={touched.lastName && errors.lastName}
+				label="Фамилия"
+				placeholder="Моя фамилия"
+				error={(this.state.wasSubmittingOnce || touched.lastName) && errors.lastName}
 				value={values.lastName}
+				onChange={handleChange}
+				onBlur={handleBlur}
+			  />
+			  <TextInput
+				id="post"
+				type="text"
+				label="Должность"
+				placeholder="Моя должность"
+				error={(this.state.wasSubmittingOnce || touched.post) && errors.post}
+				value={values.firstName}
+				onChange={handleChange}
+				onBlur={handleBlur}
+			  />
+			  <TextInput
+				id="dateWasBorn"
+				type="text"
+				label="Дата рождения"
+				error={(this.state.wasSubmittingOnce || touched.dateWasBorn) && errors.dateWasBorn}
+				value={values.firstName}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			  />
@@ -105,25 +139,17 @@ class MyForm extends Component {
 				id="email"
 				type="email"
 				label="Email"
-				placeholder="Enter your email"
-				error={touched.email && errors.email}
+				placeholder="Мой email"
+				error={(this.state.wasSubmittingOnce || touched.email) && errors.email}
 				value={values.email}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			  />
-			  <button
-				type="button"
-				className="outline"
-				onClick={handleReset}
-				disabled={!dirty || isSubmitting}
-			  >
-				Reset
-			  </button>
 			  <button type="submit" disabled={isSubmitting}>
 				Submit
 			  </button>
 			  
-			  <Popup />
+				<Popup opened={isSubmitting} />
 			  
 			</form>
 		);
@@ -134,26 +160,35 @@ class MyForm extends Component {
 const MyEnhancedForm = withFormik({
   validationSchema: Yup.object().shape({
     firstName: Yup.string()
-      .min(2, "C'mon, your name is longer than that")
-      .required('First name is required.'),
+      .max(15, 'Максимальная длина имени 15 символов')
+	  .matches(/^([А-Яа-я]*)$/, 'Имя должно быть написана на русском языке')
+      .required('Поле пусто'),
     lastName: Yup.string()
-      .min(2, "C'mon, your name is longer than that")
-      .required('Last name is required.'),
+      .max(15, 'Максимальная длина фамилии 15 символов')
+	  .matches(/^([А-Яа-я]*)$/, 'Фамилия должна быть написана на русском языке')
+      .required('Поле пусто'),
     email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required!'),
+      .email('Невалидный email адрес')
+      .required('Поле пусто'),
+    post: Yup.string()
+      .required('Поле пусто'),
+    dateWasBorn: Yup.date()
+		.typeError('Неверный формат даты')
+		.max(new Date(), 'Это невозможно')
   }),
 
   /*mapPropsToValues: ({ user }) => ({
     ...user,
   }),*/
+  //history.push("/redirect_url");
   
   handleSubmit: (values, { props, setSubmitting }) => {
-    //console.log(values);
-    console.log(props);
+	console.log(values);
 	props.addCoworker(values);
-    setSubmitting(false);
-	<Redirect to={{ pathname: "/login" }} />
+    //setSubmitting(false);
+	//props.history.push('/list');
+	//this.setState({r:'e'});
+	setTimeout(() => props.history.push('/list'), 1500);
   },
   
   displayName: 'MyForm',
@@ -161,4 +196,4 @@ const MyEnhancedForm = withFormik({
 
 
 
-export default connect()(MyEnhancedForm);
+export default withRouter(MyEnhancedForm);

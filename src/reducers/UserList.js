@@ -13,11 +13,11 @@ export default function UserList(state = initialState, action) {
         List: [
 			...state.List,
 			{
-				dateOfBirth:	154289653,
+				dateOfBirth:	action.coworkerData.dateWasBorn,
 				firstName:		action.coworkerData.firstName,
 				lastName:		action.coworkerData.lastName,
 				ava:			'https://pp.userapi.com/c846322/v846322871/a0c39/V8e-pUPjt8w.jpg?ava=1',
-				post:			'Unity developer',
+				post:			action.coworkerData.post,
 				email:			action.coworkerData.email,
 			}
 		]
