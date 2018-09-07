@@ -8,7 +8,11 @@ import styled from "styled-components";
 import * as Yup from 'yup';
 import { withFormik } from 'formik';
 
-import Popup from "./Popup";
+import * as Styles from '../styles/'
+
+import ImgSubmit from '../img/Submit.png'
+
+import PopupWindowSucces from "./PopupWindowSucces";
 
 
 
@@ -19,23 +23,12 @@ var history = createHistory();
 
 const InputFeedback = ({ error }) =>
   error ? (
-    <div className="input-feedback">{error}</div>
+    <Styles.ErrorText className="error">
+        {error}
+    </Styles.ErrorText>
   ) : null;
 
-const Label = ({
-  error,
-  className,
-  children,
-  ...props
-}) => {
-  return (
-    <label className="label" {...props}>
-      {children}
-    </label>
-  );
-};
-
-const TextInput = ({
+const CoworkerField = ({
   type,
   id,
   label,
@@ -45,29 +38,24 @@ const TextInput = ({
   className,
   ...props
 }) => {
-  /*const classes = classnames(
-    'input-group',
-    {
-      'animated shake error': !!error,
-    },
-    className
-  );*/
   return (
-    <div className={className}>
-      <Label htmlFor={id} error={error}>
-        {label}
-      </Label>
-      <input
-        id={id}
-        className="text-input"
-        type={type}
-        value={value}
-        onChange={onChange}
-        {...props}
-      />
-      <InputFeedback error={error} />
-    </div>
-  );
+    <Styles.InputCoworkerField className={className}>
+        <label htmlFor={id} error={error}>
+            <Styles.InputCoworkerLabelP>
+                {label}
+            </Styles.InputCoworkerLabelP>
+        </label>
+        <input
+            id={id}
+            className="text-input"
+            type={type}
+            value={value}
+            onChange={onChange}
+            {...props}
+        />
+        <InputFeedback error={error} />
+    </Styles.InputCoworkerField>
+    );
 };
 
 
@@ -89,14 +77,13 @@ class MyForm extends Component {
 			handleReset,
 			isSubmitting
 		} = this.props;
-		
-		console.log('MyForm',isSubmitting);
+
 		if( !this.state.wasSubmittingOnce && isSubmitting )
 			this.setState({ wasSubmittingOnce: true });
 		
 		return (
 			<form onSubmit={handleSubmit}>
-			  <TextInput
+			  <CoworkerField
 				id="firstName"
 				type="text"
 				label="Имя"
@@ -106,7 +93,7 @@ class MyForm extends Component {
 				onChange={handleChange}
 				onBlur={handleBlur}
 			  />
-			  <TextInput
+			  <CoworkerField
 				id="lastName"
 				type="text"
 				label="Фамилия"
@@ -116,7 +103,7 @@ class MyForm extends Component {
 				onChange={handleChange}
 				onBlur={handleBlur}
 			  />
-			  <TextInput
+			  <CoworkerField
 				id="post"
 				type="text"
 				label="Должность"
@@ -126,7 +113,7 @@ class MyForm extends Component {
 				onChange={handleChange}
 				onBlur={handleBlur}
 			  />
-			  <TextInput
+			  <CoworkerField
 				id="dateWasBorn"
 				type="date"
 				label="Дата рождения"
@@ -135,7 +122,7 @@ class MyForm extends Component {
 				onChange={handleChange}
 				onBlur={handleBlur}
 			  />
-			  <TextInput
+			  <CoworkerField
 				id="email"
 				type="email"
 				label="Email"
@@ -145,11 +132,11 @@ class MyForm extends Component {
 				onChange={handleChange}
 				onBlur={handleBlur}
 			  />
-			  <button type="submit" disabled={isSubmitting}>
-				Submit
-			  </button>
+			  <Styles.button type="submit" disabled={isSubmitting}>
+                  <Styles.Icon src={ImgSubmit}/>
+			  </Styles.button>
 			  
-				<Popup opened={isSubmitting} />
+				<PopupWindowSucces opened={isSubmitting} />
 			  
 			</form>
 		);
@@ -161,11 +148,11 @@ const MyEnhancedForm = withFormik({
   validationSchema: Yup.object().shape({
     firstName: Yup.string()
       .max(15, 'Максимальная длина имени 15 символов')
-	  .matches(/^([А-Яа-я]*)$/, 'Имя должно быть написана на русском языке')
+	  .matches(/^([А-Яа-я]*)$/u, 'Имя должно быть написана на русском языке')
       .required('Поле пусто'),
     lastName: Yup.string()
       .max(15, 'Максимальная длина фамилии 15 символов')
-	  .matches(/^([А-Яа-я]*)$/, 'Фамилия должна быть написана на русском языке')
+	  .matches(/^([А-Яа-я]*)$/u, 'Фамилия должна быть написана на русском языке')
       .required('Поле пусто'),
     email: Yup.string()
       .email('Невалидный email адрес')
@@ -177,19 +164,13 @@ const MyEnhancedForm = withFormik({
 		.max(new Date(), 'Это невозможно')
       .required('Поле пусто')
   }),
-
-  /*mapPropsToValues: ({ user }) => ({
-    ...user,
-  }),*/
-  //history.push("/redirect_url");
   
   handleSubmit: (values, { props, setSubmitting }) => {
-	console.log(values);
-	props.addCoworker(values);
-    //setSubmitting(false);
-	//props.history.push('/list');
-	//this.setState({r:'e'});
-	setTimeout(() => props.history.push('/list'), 1500);
+      var retValues = {...values};
+      retValues.dateWasBorn = new Date(values.dateWasBorn).getTime();
+
+      props.addCoworker(retValues);
+      setTimeout(() => props.history.push('/list'), 1500);
   },
   
   displayName: 'MyForm',

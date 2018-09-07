@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import ContainerPopup from "reactjs-popup";
 
-export default class Popup extends React.Component {
+import * as Styles from '../styles/'
+
+import ImgClose from '../img/Close.png'
+
+export default class PopupWindowSucces extends React.Component {
 	checkOpened() {
 		return (this.props.opened !== undefined && this.props.opened) || this.state.opened;
 	}
@@ -31,11 +35,17 @@ export default class Popup extends React.Component {
           onClose={this.closeModal}
         >
           <div className="modal">
-            <a className="close" onClick={this.closeModal}>
-              &times;
-            </a>
-			<p>Данныe успешно добавлены</p>
-            <p>Через 1,5 секунды вы будете переброшены на прошлый роут</p>
+              <Styles.header>
+                  <Styles.HeaderTitle>
+                      Данныe успешно добавлены
+                  </Styles.HeaderTitle>
+                      <Styles.button onClick={this.closeModal}>
+                          <Styles.Icon src={ImgClose} />
+                      </Styles.button>
+              </Styles.header>
+              <Styles.PopupWindowSuccesContent>
+                  Через 1,5 секунды вы будете переброшены на прошлый роут
+              </Styles.PopupWindowSuccesContent>
           </div>
         </ContainerPopup>
       </div>

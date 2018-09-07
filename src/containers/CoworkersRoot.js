@@ -4,22 +4,14 @@ import { createStore, combineReducers } from 'redux'
 import { Router, Route, Link } from 'react-router-dom'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
-import styled from "styled-components";
 import yup from 'yup';
 import formik from 'formik';
 
 import Coworkers from './Coworkers'
 
+import * as Styles from '../styles/'
+
 import ImgAddCoworker from '../img/AddCoworker.png'
-
-const AddButton = styled.button`
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
-
 
 class CoworkersRoot extends Component {
 	StartUpdateListProcess()
@@ -47,14 +39,17 @@ class CoworkersRoot extends Component {
 	}
 	render() {
 		return (
-			<div id="CoworkersRoot">
-				<header>
+			<div id="CoworkersRoot" className="box">
+				<Styles.header>
+                    <Styles.HeaderTitle>
+                        Сотрудники
+                    </Styles.HeaderTitle>
 					<Link to="/add">
-						<AddButton>
-							<img src={ImgAddCoworker} />
-						</AddButton>
+						<Styles.button>
+							<Styles.Icon src={ImgAddCoworker} />
+						</Styles.button>
 					</Link>
-				</header>
+				</Styles.header>
 				<content>
 					<Coworkers UserList={this.props.UserList.List} />
 				</content>

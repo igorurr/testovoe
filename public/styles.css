@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #efeff9;
+}
+
+.box {
+    background: #fefeff;
+    box-shadow: #9f9fcf 0 0 37px;
+    padding: 11px;
+    margin: 77px auto auto auto;
+
+    width: 70%;
+    min-width: 469px;
+    max-width: 500px;
+}

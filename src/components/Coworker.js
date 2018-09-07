@@ -4,11 +4,10 @@ import { createStore, combineReducers } from 'redux'
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
-import styled from "styled-components";
 import yup from 'yup';
 import formik from 'formik';
 
-
+import * as Styles from '../styles/'
 
 class Coworker extends Component {
 	TimestampToDate(timestamp) {
@@ -19,13 +18,13 @@ class Coworker extends Component {
 	
   render() {
     return (
-      <div className="Coworker">
+      <Styles.Record className="Coworker">
 		<img src={this.props.data.ava} />
 		<div className="info">
-			<h3>{this.props.data.firstName} {this.props.data.lastName}</h3>
-			<h4>Родился: {this.TimestampToDate(this.props.data.dateOfBirth)}, {this.props.data.post}, {this.props.data.email}</h4>
+			<Styles.RecordName>{this.props.data.firstName} {this.props.data.lastName}</Styles.RecordName>
+			<Styles.RecordAnotherInfo>Родился: {this.TimestampToDate(this.props.data.dateOfBirth)}, {this.props.data.post}, {this.props.data.email}</Styles.RecordAnotherInfo>
 		</div>
-      </div>
+      </Styles.Record>
     );
   }
 }

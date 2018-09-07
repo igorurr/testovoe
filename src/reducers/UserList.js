@@ -16,7 +16,7 @@ export default function UserList(state = initialState, action) {
 				dateOfBirth:	action.coworkerData.dateWasBorn,
 				firstName:		action.coworkerData.firstName,
 				lastName:		action.coworkerData.lastName,
-				ava:			'https://pp.userapi.com/c846322/v846322871/a0c39/V8e-pUPjt8w.jpg?ava=1',
+				ava:			'https://vk.com/images/camera_50.png?ava=1',
 				post:			action.coworkerData.post,
 				email:			action.coworkerData.email,
 			}
