@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { createStore, combineReducers } from 'redux'
-import { Router, Route, Link } from 'react-router-dom'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { Link } from 'react-router-dom'
 
-import yup from 'yup';
-import formik from 'formik';
-
-import Coworkers from './Coworkers'
+import Coworkers from '../components/Coworkers'
 
 import * as Styles from '../styles/'
 
@@ -60,7 +55,7 @@ class CoworkersRoot extends Component {
 
 
 function mapStateToProps(state) {
-  return { UserList: state.UserList }
+    return { UserList: state.UserList }
 }
 
 export default connect(mapStateToProps)(CoworkersRoot)

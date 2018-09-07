@@ -1,24 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { createStore, combineReducers } from 'redux'
-import { Router, Route, Link, Redirect, withRouter } from 'react-router-dom'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { withRouter } from 'react-router-dom'
 
-import styled from "styled-components";
 import * as Yup from 'yup';
 import { withFormik } from 'formik';
 
-import * as Styles from '../styles/'
+import * as Styles from '../styles/index'
 
 import ImgSubmit from '../img/Submit.png'
 
 import PopupWindowSucces from "./PopupWindowSucces";
-
-
-
-
-import createHistory from 'history/createBrowserHistory';
-var history = createHistory();
 
 
 const InputFeedback = ({ error }) =>
@@ -165,7 +155,7 @@ const MyEnhancedForm = withFormik({
       .required('Поле пусто')
   }),
   
-  handleSubmit: (values, { props, setSubmitting }) => {
+  handleSubmit: (values, { props }) => {
       var retValues = {...values};
       retValues.dateWasBorn = new Date(values.dateWasBorn).getTime();
 

@@ -1,7 +1,7 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link } from 'react-router-dom'
+import { Router, Route } from 'react-router-dom'
 
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
@@ -11,7 +11,6 @@ import createHistory from 'history/createBrowserHistory';
 
 import reducers from "./reducers/";
 
-import App from './containers/App';
 import CoworkersRoot from './containers/CoworkersRoot';
 import CoworkersForm from './containers/CoworkersForm';
 
@@ -21,8 +20,6 @@ const store = createStore(
 	}),
 	compose(applyMiddleware(thunk))
 );
-
-//console.log(store.getState());
 
 var history = createHistory();
 

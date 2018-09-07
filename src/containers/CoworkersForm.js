@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Router, Route, Link, Redirect } from 'react-router-dom'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { Link } from 'react-router-dom'
 
 import * as UserListActions from '../actions/UserList';
 
-import Form from './Form';
+import Form from '../components/Form';
 
 import * as Styles from '../styles/'
 
