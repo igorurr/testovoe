@@ -1,4 +1,4 @@
-import * as _ActionTypes from '../constants/ActionTypesUserList';
+import * as _ActionTypes from "../constants/ActionTypesUserList";
 
 export function AddCoworker(coworkerData) {
   return {

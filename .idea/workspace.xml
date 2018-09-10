@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="234747f4-fbd6-49e3-ac05-5ded0422507d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/testapp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/Back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/Close.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/Submit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Form.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/DefaultUserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/DefaultUserList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Coworker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Coworker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Coworkers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Coworkers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/CoworkersForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/CoworkersForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/CoworkersRoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/CoworkersRoot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWindowSucces.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/UserList.js" afterDir="false" />
-    </list>
+    <list default="true" id="234747f4-fbd6-49e3-ac05-5ded0422507d" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -284,16 +257,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1536316228986</updated>
-      <workItem from="1536316236446" duration="18475000" />
+      <workItem from="1536316236446" duration="19082000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18475000" />
+    <option name="totallyTimeSpent" value="19082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.58582675" visible="true" weight="0.24304539" />
       <window_info anchor="bottom" id="TODO" order="6" />
